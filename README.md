@@ -1,2 +1,1 @@
-# Baekjoon-project
-백준
+# 백준 연습 코딩
