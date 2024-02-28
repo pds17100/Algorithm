@@ -27,7 +27,6 @@ public class 제로 {
             sum += o;
         }
         System.out.println(sum);
-        System.out.println("ㅎㅇ");
     }
 
 }
