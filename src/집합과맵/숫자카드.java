@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 /**
- * Hash map
+ * HashMap
  */
 public class 숫자카드 {
     public static void main(String[] args) throws IOException {
