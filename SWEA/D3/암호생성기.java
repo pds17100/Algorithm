@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class 암호생성기 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        Queue<Integer> q = new LinkedList<Integer>();
+        Queue<Integer> q = new LinkedList<>();
         for (int t = 1; t <= 10; t++) {
             scan.nextInt();
             for (int i = 0; i < 8; i++) {
