@@ -8,20 +8,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-        int X = Integer.parseInt(st.nextToken());
-        int Y = Integer.parseInt(st.nextToken());
-        int RevX = Rev(X);
-        int RevY = Rev(Y);
-        int result = RevX + RevY;
-        System.out.println(Rev(result));
+        StringBuilder sbnum1 = new StringBuilder(st.nextToken());
+        StringBuilder sbnum2 = new StringBuilder(st.nextToken());
+        String revnum1 = sbnum1.reverse().toString();
+        String revnum2 = sbnum2.reverse().toString();
+        int num1 = Integer.parseInt(revnum1);
+        int num2 = Integer.parseInt(revnum2);
+        StringBuilder sbresult = new StringBuilder(String.valueOf(num1 + num2));
+        int result = Integer.parseInt(sbresult.reverse().toString());
+        System.out.println(result);
     }
 
-    private static int Rev(int num) {
-        int result = 0;
-        while (num > 0) {
-            result = result * 10 + num % 10;
-            num /= 10;
-        }
-        return result;
-    }
 }
