@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -35,19 +34,6 @@ public class Main {
             list[start].add(end);
             list[end].add(start);
         }
-
-/*        for (int i = 1; i <= N; i++) {
-            Collections.sort(list[i], new Comparator<Integer>() {
-                @Override
-                public int compare(Integer o1, Integer o2) {
-                    return o2 - o1;
-                }
-            });
-        }*/
-
-/*        for (int i = 1; i <= N; i++) {
-            Collections.sort(list[i]);
-        }*/
 
         if (!visited[R]) {
             dfs(R);
