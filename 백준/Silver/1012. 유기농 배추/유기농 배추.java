@@ -2,6 +2,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -11,6 +13,7 @@ public class Main {
     static StringBuilder sb = new StringBuilder();
     static int dx[] = {0, 1, -1, 0};
     static int dy[] = {1, 0, 0, -1};
+    static Queue<Node> q = new LinkedList<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -33,11 +36,19 @@ public class Main {
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
                     if (map[i][j] == 1 && !visited[i][j]) {
+                        result++;
+                        bfs(i, j);
+                    }
+                }
+            }
+/*            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < M; j++) {
+                    if (map[i][j] == 1 && !visited[i][j]) {
                         dfs(i, j);
                         result++;
                     }
                 }
-            }
+            }*/
             sb.append(result).append("\n");
         }
         System.out.println(sb);
@@ -54,4 +65,32 @@ public class Main {
             }
         }
     }
+
+    private static void bfs(int x, int y) {
+        q.offer(new Node(x, y));
+        visited[x][y] = true;
+
+        while (!q.isEmpty()) {
+            Node node = q.poll();
+            for (int k = 0; k < 4; k++) {
+                int nx = node.x + dx[k];
+                int ny = node.y + dy[k];
+                if (nx >= 0 && nx < N && ny >= 0 && ny < M && !visited[nx][ny] && map[nx][ny] == 1) {
+                    q.offer(new Node(nx, ny));
+                    visited[nx][ny] = true;
+                }
+            }
+        }
+    }
+
+    static class Node {
+        int x;
+        int y;
+
+        Node(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
 }
