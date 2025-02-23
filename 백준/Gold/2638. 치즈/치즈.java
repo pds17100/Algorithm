@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -72,6 +71,7 @@ public class Main {
                 meltedCheese.add(node);
             }
         }
+        
         for (Node node : meltedCheese) {
             map[node.x][node.y] = 0;
             cheeseCnt--;
