@@ -24,18 +24,16 @@ public class Main {
 
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                dfs(i, j, 0, arr[i][j]);
+                dfs(i, j, arr[i][j]);
             }
         }
 
         System.out.println(s.size());
     }
 
-    private static void dfs(int x, int y, int cnt, String num) {
-        if (cnt == 5) {
-            if (!s.contains(num)) {
-                s.add(num);
-            }
+    private static void dfs(int x, int y, String str) {
+        if (str.length() == 6) {
+            s.add(str);
             return;
         }
 
@@ -43,10 +41,9 @@ public class Main {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
-            if (nx < 0 || nx >= 5 || ny < 0 || ny >= 5) {
-                continue;
+            if (nx >= 0 && nx < 5 && ny >= 0 && ny < 5) {
+                dfs(nx, ny, arr[nx][ny] + str);
             }
-            dfs(nx, ny, cnt + 1, arr[nx][ny] + num);
         }
     }
 }
