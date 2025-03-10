@@ -40,11 +40,15 @@ public class Main {
         for (int i = 1; i <= N; i++) {
             int cnt = 0;
             for (int j = 1; j <= N; j++) {
-                if (arr[i][j] != 0) {
+/*                if (arr[i][j] != 0) {
+                    cnt++;
+                }*/
+                if (arr[i][j] == 0) {
                     cnt++;
                 }
             }
-            sb.append(N - cnt).append("\n");
+//            sb.append(N - cnt).append("\n");
+            sb.append(cnt).append("\n");
         }
 
         System.out.println(sb);
