@@ -9,7 +9,6 @@ public class Main {
     static String arr[];
     static boolean visited[];
     static HashSet<String> hashSet = new HashSet<>();
-    static int result = 0;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -23,13 +22,12 @@ public class Main {
         }
 
         dfs(0,"");
-        System.out.println(result);
+        System.out.println(hashSet.size());
     }
 
     private static void dfs(int depth, String str) {
-        if (depth == K && !hashSet.contains(str)) {
+        if (depth == K) {
             hashSet.add(str);
-            result++;
             return;
         }
 
@@ -40,7 +38,6 @@ public class Main {
                 visited[i] = false;
             }
         }
-
 
     }
 }
