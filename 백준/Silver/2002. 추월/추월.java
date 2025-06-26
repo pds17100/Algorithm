@@ -1,35 +1,35 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        Queue<String> inCar = new LinkedList<>();
-        Queue<String> outCar = new LinkedList<>();
-
-        for (int i = 0; i < N; i++) {
-            inCar.offer(br.readLine());
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        for (int i = 1; i <= N; i++) {
+            hashMap.put(br.readLine(), i);
         }
-        for (int i = 0; i < N; i++) {
-            outCar.offer(br.readLine());
+
+        int outCar[] = new int[N + 1];
+        for (int i = 1; i <= N; i++) {
+            String car = br.readLine();
+            outCar[i] = hashMap.get(car);
         }
 
         int result = 0;
-        while (!outCar.isEmpty()) {
-            String out = outCar.poll();
-            if (!inCar.peek().equals(out)) {
-                result++;
-                inCar.remove(out);
-            } else {
-                inCar.poll();
+
+        for (int i = 0; i < N; i++) {
+            for (int j = i + 1; j <= N; j++) {
+                if (outCar[i] > outCar[j]) {
+                    result++;
+                    break;
+                }
             }
         }
 
         System.out.println(result);
+
     }
 }
