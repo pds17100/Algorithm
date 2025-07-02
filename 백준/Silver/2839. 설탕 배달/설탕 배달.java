@@ -1,25 +1,33 @@
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int N = scan.nextInt();
-        int result = 0;
-        while (N > 0) {
-            if (N % 5 == 0) {
-                result += N / 5;
-                System.out.println(result);
-                return;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        int dp[] = new int[N + 1];
+        if (N >= 3) dp[3] = 1;
+        if (N >= 5) dp[5] = 1;
+
+        for (int i = 6; i <= N; i++) {
+            if (i % 5 == 0) {
+                dp[i] = dp[i - 5] + 1;
+            } else if (i % 3 == 0) {
+                dp[i] = dp[i - 3] + 1;
             } else {
-                N -= 3;
-                result++;
-            }
-            if (N < 0) {
-                System.out.println("-1");
-                return;
+                if (dp[i - 3] != 0 && dp[i - 5] != 0) {
+                    dp[i] = Math.min(dp[i - 3], dp[i - 5]) + 1;
+                }
             }
         }
-        System.out.println(result);
+
+        if (dp[N] == 0) {
+            System.out.println("-1");
+        } else {
+            System.out.println(dp[N]);
+        }
+
     }
 }
