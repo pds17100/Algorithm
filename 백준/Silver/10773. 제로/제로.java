@@ -1,35 +1,29 @@
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Stack;
 
 public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int K = Integer.parseInt(br.readLine());
+        Stack<Integer> stack = new Stack<>();
+        int result = 0;
+        for (int i = 0; i < K; i++) {
+            int num = Integer.parseInt(br.readLine());
+            if (num == 0) {
+                stack.pop();
+            } else {
+                stack.push(num);
+            }
+        }
 
-	public static void main(String[] args) throws IOException {
+        while (stack.size() > 0) {
+            int num = stack.pop();
+            result += num;
+        }
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	
-		Stack<Integer> stack = new Stack<Integer>();
-		
-		int T = Integer.parseInt(br.readLine());
-		
-		for(int i=0; i<T; i++) {
-			
-			int a = Integer.parseInt(br.readLine());
-			
-			if(a == 0) {
-				stack.pop();
-			}
-			else {
-				stack.push(a);
-			}
-		}
-		int sum=0;
-	
-		for(int o : stack) {	//stack에담긴원소합구하기
-			sum += o;
-		}
-		System.out.println(sum);
-	}
-
+        System.out.println(result);
+    }
 }
