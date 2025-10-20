@@ -1,26 +1,26 @@
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Scanner;
+import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Scanner scan = new Scanner(System.in);
-        String s = scan.next();
-        String res = "";
-        res = poliomino(s);
-        System.out.println(res);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str = br.readLine();
+        String result = "";
+        result = poli(str);
+        System.out.println(result);
     }
 
-    private static String poliomino(String s) {
+    private static String poli(String s) {
         String ans = "";
         String A = "AAAA";
         String B = "BB";
         s = s.replaceAll("XXXX", A);
-        ans = s.replaceAll("XX", B);
-
-        if (ans.contains("X")) {
-            ans = "-1";
+        s = s.replaceAll("XX", B);
+        if (s.contains("X")) {
+            return "-1";
         }
-        return ans;
+        return s;
     }
 }
