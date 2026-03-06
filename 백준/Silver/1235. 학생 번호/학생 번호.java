@@ -19,11 +19,7 @@ public class Main {
             set.clear();
             for (int j = 0; j < N; j++) {
                 String code = str[j].substring(len - i, len);
-                if (set.contains(code)) {
-                    break;
-                } else {
                     set.add(code);
-                }
             }
             if (set.size() == N) {
                 System.out.println(i);
